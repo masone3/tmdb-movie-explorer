@@ -1,17 +1,31 @@
 import { useMovies } from './hooks/useMovies';
+import MovieGrid from './components/MovieGrid';
 
 function App() {
   const { data, isLoading, isError, error } = useMovies();
 
-  if (isLoading) return <p className="p-4">Loading movies...</p>;
-  if (isError) return <p className="p-4 text-red-500">Error: {error.message}</p>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-lg text-gray-500">Loading movies...</p>
+      </div>
+    );
+  }
+
+  if (isError) { 
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-lg text-red-500">Error: {error.message}</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Popular Movies (raw test)</h1>
-      <pre className="text-xs bg-gray-100 p-2 rounded overflow-auto">
-        {JSON.stringify(data, null, 2)}
-      </pre>
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white shadow-sm p-4 sticky top-0 z-10">
+        <h1 className="text-2xl font-bold">🎬 Movie Explorer</h1>
+      </header>
+      <MovieGrid movies={data.results} />
     </div>
   );
 }

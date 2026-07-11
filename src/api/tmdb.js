@@ -18,3 +18,4 @@ export const getPopularMovies = async (page = 1) => {
 };
 
 export default tmdbClient;
+export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
