@@ -17,5 +17,12 @@ export const getPopularMovies = async (page = 1) => {
     return response.data;
 };
 
+export const searchMovies = async (query, page = 1) => {
+  const response = await tmdbClient.get('/search/movie', {
+    params: { query, page },
+  });
+  return response.data;
+};
+
 export default tmdbClient;
 export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
