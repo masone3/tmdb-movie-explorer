@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-marquee-gold: #E8B04B;
+  --color-velvet-red: #8B2635;
+  --color-theater-black: #121218;
+  --color-theater-card: #1C1C24;
+  --color-cream: #F5F1E8;
+  --color-slate-muted: #8B8D98;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-theater-black);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+}

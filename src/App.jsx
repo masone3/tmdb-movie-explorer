@@ -53,41 +53,47 @@ function App() {
   const moviesToShow = showFavoritesOnly ? favorites : allMovies;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm p-4 sticky top-0 z-10 flex items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold whitespace-nowrap">🎬 Movie Explorer</h1>
-        <SearchBar value={searchTerm} onChange={setSearchTerm} />
-        
-        <button
-          onClick={() => setShowFavoritesOnly((prev) => !prev)}
-          className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 whitespace-nowrap"
-        >
-          {showFavoritesOnly ? '🎬 Show All' : '❤️ Favorites'}
-        </button>
-
-        <FilterBar
-          genreId={genreId}
-          onGenreChange={setGenreId}
-          year={year}
-          onYearChange={setYear}
-        />
+    <div className="min-h-screen bg-theater-black">
+      <header className="bg-theater-card border-b border-white/10 sticky top-0 z-50 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center gap-4 justify-between">
+          <h1 className="font-display text-4xl tracking-wide text-marquee-gold">
+            MOVIE EXPLORER
+          </h1>
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <SearchBar value={searchTerm} onChange={setSearchTerm} />
+            <FilterBar
+              genreId={genreId}
+              onGenreChange={setGenreId}
+              year={year}
+              onYearChange={setYear}
+            />
+            <button
+              onClick={() => setShowFavoritesOnly((prev) => !prev)}
+              className="px-4 py-2 rounded border border-marquee-gold/40 text-marquee-gold hover:bg-marquee-gold hover:text-theater-black transition-colors whitespace-nowrap font-medium"
+            >
+              {showFavoritesOnly ? 'Show All' : '♥ Favorites'}
+            </button>
+          </div>
+        </div>
       </header>
 
       {isLoading && (
         <div className="flex items-center justify-center h-64">
-          <p className="text-lg text-gray-500">Loading...</p>
+          <p className="text-lg text-slate-muted font-display tracking-wide">LOADING...</p>
         </div>
       )}
 
       {isError && (
         <div className="flex items-center justify-center h-64">
-          <p className="text-lg text-red-500">Error: {error.message}</p>
+          <p className="text-lg text-velvet-red">Error: {error.message}</p>
         </div>
       )}
 
-      {!isLoading && !isError && moviesToShow.length === 0 && (
-        <div className="flex items-center justify-center h-64">
-          <p className="text-lg text-gray-500">No movies found.</p>
+      {moviesToShow.length === 0 && !isLoading && !isError && (
+        <div className="flex flex-col items-center justify-center h-64 text-slate-muted">
+          <p className="text-lg">
+            {showFavoritesOnly ? "You haven't favorited any movies yet." : "No movies found."}
+          </p>
         </div>
       )}
 

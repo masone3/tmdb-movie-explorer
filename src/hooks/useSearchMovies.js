@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { searchMovies } from '../api/tmdb';
 
-export const useSearchMovies = (query, page = 1) => {
+export const useSearchMovies = (query) => {
     return useInfiniteQuery({
         queryKey: ['movies', 'search', query],
         queryFn: ({ pageParam = 1 }) => searchMovies(query, pageParam),

@@ -11,7 +11,7 @@ function FilterBar({ genreId, onGenreChange, year, onYearChange}) {
       <select
         value={genreId}
         onChange={(e) => onGenreChange(e.target.value)}
-        className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+        className="px-3 py-2 bg-theater-black border border-white/15 rounded text-cream text-sm focus:outline-none focus:ring-2 focus:ring-marquee-gold/60"
       >
         <option value="">All Genres</option>
         {!isLoading &&
@@ -25,7 +25,7 @@ function FilterBar({ genreId, onGenreChange, year, onYearChange}) {
       <select
         value={year}
         onChange={(e) => onYearChange(e.target.value)}
-        className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+        className="px-3 py-2 bg-theater-black border border-white/15 rounded text-cream text-sm focus:outline-none focus:ring-2 focus:ring-marquee-gold/60"
       >
         <option value="">All Years</option>
         {years.map((y) => (
